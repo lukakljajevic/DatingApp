@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -28,6 +28,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { ListsResolver } from './_resolvers/lists.resolver';
 
 
 export function tokenGetter() {
@@ -74,7 +75,9 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       TabsModule.forRoot(),
       NgxGalleryModule,
       FileUploadModule,
-      BsDatepickerModule.forRoot()
+      BsDatepickerModule.forRoot(),
+      PaginationModule.forRoot(),
+      ButtonsModule.forRoot()
    ],
    providers: [
       ErrorInterceptorProvider,
@@ -83,6 +86,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       MemberDetailResolver,
       MemberListResolver,
       MemberEditResolver,
+      ListsResolver,
       { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
    ],
    bootstrap: [
